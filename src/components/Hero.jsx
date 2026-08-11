@@ -43,7 +43,7 @@ const Hero = () => {
 
         <div className="hero-stats" ref={statsRef}>
           <div className="stat-item">
-            <span className="stat-number">6.8M</span>
+            <span className="stat-number">6800</span>
             <span className="stat-label">km de costa</span>
           </div>
           <div className="stat-item">

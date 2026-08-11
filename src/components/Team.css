@@ -65,10 +65,20 @@
 /* Team Grid */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-xl);
-  max-width: 900px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  align-items: stretch;
+  max-width: 1200px;
   margin: 0 auto var(--spacing-2xl);
+}
+
+.team-grid > .team-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-grid > .team-card .team-card-content {
+  flex: 1;
 }
 
 /* Team Cards */
@@ -133,6 +143,10 @@
   background: conic-gradient(from 0deg, transparent, rgba(0, 102, 204, 0.15), transparent, rgba(0, 119, 190, 0.15), transparent);
 }
 
+.communication-glow {
+  background: conic-gradient(from 0deg, transparent, rgba(92, 157, 203, 0.18), transparent, rgba(29, 56, 94, 0.12), transparent);
+}
+
 .team-card:hover .leadership-glow {
   opacity: 1;
 }
@@ -176,6 +190,10 @@
 
 .team-card-coordinator .team-card-image {
   border-bottom-color: rgba(0, 102, 204, 0.3);
+}
+
+.team-card-communication .team-card-image {
+  border-bottom-color: rgba(92, 157, 203, 0.3);
 }
 
 .team-card:hover .team-card-image {
@@ -364,6 +382,28 @@
 }
 
 .role-coordinator::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(45deg);
+  animation: badgeShine 3s linear infinite;
+}
+
+.role-communication {
+  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-navy) 100%);
+  color: var(--color-white);
+  box-shadow: 0 6px 20px rgba(92, 157, 203, 0.4);
+  font-size: 0.72rem;
+  padding: 0.6rem 1.1rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.role-communication::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -828,53 +868,14 @@
 }
 
 /* ============================================
-   COMMUNICATION SECTION - COMUNICACIÓN INSTITUCIONAL
+   COMUNICACIÓN INSTITUCIONAL
    ============================================ */
-
-.communication-section {
-  margin: var(--spacing-2xl) 0;
-  padding: var(--spacing-2xl) 0;
-  position: relative;
-}
-
-.communication-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--color-navy) 50%, transparent 100%);
-  opacity: 0.2;
-}
-
-.communication-header {
-  text-align: center;
-  margin-bottom: var(--spacing-xl);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.communication-header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .section-subtitle {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-family: var(--font-display);
   color: var(--color-navy);
   margin-top: var(--spacing-sm);
-}
-
-.communication-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-lg);
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .team-card-communication {
@@ -888,31 +889,11 @@
   border-color: var(--color-blue);
 }
 
+/* Modificador de .leadership-icon: mismo tamaño y comportamiento
+   que los íconos de Presidente/Coordinador, en paleta institucional */
 .communication-icon {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-navy) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(92, 157, 203, 0.4);
-  z-index: 2;
-  transition: all 0.3s ease;
-}
-
-.team-card-communication:hover .communication-icon {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 8px 24px rgba(92, 157, 203, 0.6);
-}
-
-.communication-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--color-white);
+  background: linear-gradient(135deg, rgba(92, 157, 203, 0.95) 0%, rgba(29, 56, 94, 0.95) 100%);
+  box-shadow: 0 8px 32px rgba(92, 157, 203, 0.5);
 }
 
 .role-director {
@@ -923,12 +904,6 @@
 
 .role-director span {
   color: var(--color-white);
-}
-
-.role-member {
-  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-navy) 100%);
-  box-shadow: 0 4px 12px rgba(92, 157, 203, 0.3);
-  color: white;
 }
 
 .team-linkedin-link {
@@ -962,19 +937,7 @@
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-  .communication-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 800px;
-  }
-}
-
 @media (max-width: 768px) {
-  .communication-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-  }
-
   .section-subtitle {
     font-size: clamp(1.5rem, 4vw, 2rem);
   }

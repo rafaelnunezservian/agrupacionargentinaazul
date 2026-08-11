@@ -114,74 +114,31 @@ const Team = () => {
               <div className="card-shine"></div>
             </div>
           </div>
-        </div>
 
-        {/* Comunicación Institucional */}
-        <div className="communication-section">
-          <div className="communication-header animate-on-scroll">
-            <span className="team-badge">Dirección de Comunicación Institucional</span>
-          </div>
-
-          <div className="communication-grid">
-            {/* Matías Cortiña */}
-            <div className="team-card team-card-communication animate-on-scroll">
-              <div className="team-card-image">
-                <img src="/matias.jpg" alt="Matías Cortiña" />
-                <div className="team-card-overlay"></div>
-                <div className="communication-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="team-card-content">
-                <div className="name-container">
-                  <h4 className="team-card-name">Matías Cortiña</h4>
-                  <div className="name-underline"></div>
-                </div>
-                <div className="team-card-roles">
-                  <span className="team-role-badge role-member">
-                    <span className="badge-icon">●</span>
-                    Integrante
-                  </span>
-                </div>
-                <p className="team-card-position">
-                  Dirección de Comunicación Institucional
-                </p>
-                <div className="card-shine"></div>
+          {/* Matías Cortiña */}
+          <div className="team-card team-card-communication animate-on-scroll">
+            <div className="leadership-glow communication-glow"></div>
+            <div className="team-card-image">
+              <img src="/matias.jpg" alt="Matías Cortiña" />
+              <div className="team-card-overlay"></div>
+              <div className="leadership-icon communication-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
               </div>
             </div>
-
-            {/* Yamila Schwarzkopf */}
-            <div className="team-card team-card-communication animate-on-scroll">
-              <div className="team-card-image">
-                <img src="/yamila.jpg" alt="Yamila Schwarzkopf" />
-                <div className="team-card-overlay"></div>
-                <div className="communication-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </div>
+            <div className="team-card-content">
+              <div className="name-container">
+                <h3 className="team-card-name">Matías Cortiña</h3>
+                <div className="name-underline"></div>
               </div>
-              <div className="team-card-content">
-                <div className="name-container">
-                  <h4 className="team-card-name">Yamila Schwarzkopf</h4>
-                  <div className="name-underline"></div>
-                </div>
-                <div className="team-card-roles">
-                  <span className="team-role-badge role-member">
-                    <span className="badge-icon">●</span>
-                    Integrante
-                  </span>
-                </div>
-                <p className="team-card-position">
+              <div className="team-card-roles">
+                <span className="team-role-badge role-communication">
+                  <span className="badge-icon">●</span>
                   Dirección de Comunicación Institucional
-                </p>
-                <p className="team-card-bio">
-                  Referente en el Partido de San Martín (Provincia de Bs. As.)
-                </p>
-                <div className="card-shine"></div>
+                </span>
               </div>
+              <div className="card-shine"></div>
             </div>
           </div>
         </div>

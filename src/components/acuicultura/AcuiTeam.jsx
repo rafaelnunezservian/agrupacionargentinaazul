@@ -14,13 +14,6 @@ const team = [
     alt: 'Matías Cortiña'
   },
   {
-    name: 'Yamila Schwarzkopf',
-    role: 'Difusión y Relaciones Institucionales',
-    image: '/yamila.jpg',
-    alt: 'Yamila Schwarzkopf'
-  },
-
-  {
     name: 'Guadalupe Polio',
     role: 'Community manager y gestora de redes del equipo',
     image: '/guadalupe-polio.jpg',

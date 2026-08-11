@@ -112,7 +112,7 @@ const About = () => {
               </p>
               <div className="vision-stats">
                 <div className="vision-stat">
-                  <span className="stat-value">6.8M</span>
+                  <span className="stat-value">6800</span>
                   <span className="stat-desc">km de costa</span>
                 </div>
                 <div className="vision-stat">

@@ -7,9 +7,17 @@ export function sanitizeWhatsappInput(value) {
   return (value ?? '').replace(/\D/g, '').slice(0, 10);
 }
 
-/** Arma el link de wa.me asumiendo Argentina (54) + celular (9) + los 10 dígitos. */
-export function buildWhatsappUrl(number) {
+/**
+ * Arma el link de wa.me asumiendo Argentina (54) + celular (9) + los 10 dígitos.
+ * `message` es opcional (specs/002-linktree-qr, FR-027): si se pasa un texto no
+ * vacío, se agrega como `?text=` codificado para precargar el mensaje al abrir
+ * la conversación. Nunca se guarda armado en Firestore — se deriva acá.
+ */
+export function buildWhatsappUrl(number, message) {
   const digits = sanitizeWhatsappInput(number);
   if (digits.length !== 10) return null;
-  return `https://wa.me/549${digits}`;
+  const url = `https://wa.me/549${digits}`;
+  const trimmedMessage = (message ?? '').trim();
+  if (!trimmedMessage) return url;
+  return `${url}?text=${encodeURIComponent(trimmedMessage)}`;
 }

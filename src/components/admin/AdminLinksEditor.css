@@ -1,0 +1,211 @@
+.admin-links-editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 720px;
+}
+
+.admin-links-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.admin-links-editor-header h2 {
+  font-size: 1.4rem;
+}
+
+.admin-links-editor-status {
+  color: var(--color-navy);
+  opacity: 0.7;
+}
+
+.admin-links-editor-error {
+  color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+}
+
+.admin-links-btn {
+  border: 1px solid #d5dce6;
+  background: var(--color-white);
+  color: var(--color-navy);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.admin-links-btn:hover:not(:disabled) {
+  background: var(--color-gray);
+}
+
+.admin-links-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-links-btn-primary {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.admin-links-btn-primary:hover:not(:disabled) {
+  background: var(--color-navy-light);
+}
+
+.admin-links-btn-danger {
+  color: #c0392b;
+  border-color: rgba(192, 57, 43, 0.4);
+}
+
+.admin-links-btn-danger:hover:not(:disabled) {
+  background: rgba(192, 57, 43, 0.08);
+}
+
+.admin-links-btn-icon {
+  padding: 0.5rem 0.7rem;
+  line-height: 1;
+}
+
+.admin-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.admin-links-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--color-white);
+  border: 1px solid #e2e7ee;
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.admin-links-list-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-gray);
+  color: var(--color-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-links-list-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.admin-links-list-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.admin-links-list-info strong {
+  font-size: 1rem;
+}
+
+.admin-links-list-info span {
+  font-size: 0.85rem;
+  color: var(--color-navy);
+  opacity: 0.75;
+}
+
+.admin-links-badge {
+  align-self: flex-start;
+  background: var(--color-blue);
+  color: var(--color-white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.6rem;
+  border-radius: 50px;
+}
+
+.admin-links-badge-muted {
+  background: var(--color-gray);
+  color: var(--color-navy);
+  opacity: 0.8;
+}
+
+.admin-links-badge-warning {
+  background: rgba(192, 57, 43, 0.12);
+  color: #c0392b;
+}
+
+.admin-links-list-actions {
+  display: flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.admin-links-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  background: var(--color-white);
+  border: 1px solid #e2e7ee;
+  border-radius: 12px;
+  padding: var(--spacing-md);
+}
+
+.admin-links-form h3 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.admin-links-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: var(--spacing-xs);
+}
+
+.admin-links-form input,
+.admin-links-form select,
+.admin-links-form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d5dce6;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.admin-links-form input:focus,
+.admin-links-form select:focus,
+.admin-links-form textarea:focus {
+  border-color: var(--color-blue);
+}
+
+.admin-links-form-hint {
+  font-size: 0.8rem;
+  color: var(--color-navy);
+  opacity: 0.65;
+  margin-top: 0.2rem;
+  word-break: break-all;
+}
+
+.admin-links-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}

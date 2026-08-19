@@ -20,8 +20,7 @@ function BlogPromo() {
 
         <p className="blog-promo-subtitle animate-on-scroll">
           Lo que hacemos, lo que aprendemos y lo que está pasando con nuestro mar.
-          Jornadas, producción acuícola y conciencia marítima, contado por quienes
-          están en el territorio.
+          Información contada por gente que se involucra con el cambio que proponemos.
         </p>
 
         <div className="blog-promo-actions animate-on-scroll">

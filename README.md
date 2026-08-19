@@ -77,7 +77,13 @@ firebase emulators:start --only firestore,storage,auth
 - Hay un único usuario administrador, creado manualmente en la consola de Firebase → Authentication (email/password). Su UID está hardcodeado en `firebase/firestore.rules` y `firebase/storage.rules` (`isAdmin()`), así que **si se recrea el usuario, hay que actualizar el UID en ambos archivos y redesplegar las reglas**.
 - Login en `http://localhost:5173/admin` (dev) o `https://<dominio>/admin` (producción). No hay flujo de "olvidé mi contraseña" en el panel — es una decisión explícita del spec (un único admin, bajo volumen de uso).
 - **Reseteo manual de contraseña**: consola de Firebase → Authentication → Users → seleccionar el usuario → "Reset password" (envía un email al admin), o cambiarla directo desde ahí. El UID del usuario no cambia al resetear la contraseña, así que las Security Rules no necesitan tocarse.
-- Secciones administrables desde `/admin`: equipo del Home (`/admin/equipo-home`), equipo de Acuicultura (`/admin/equipo-acuicultura`), blog (`/admin/blog`) e inversión (`/admin/inversion`).
+- Secciones administrables desde `/admin`: equipo del Home (`/admin/equipo-home`), equipo de Acuicultura (`/admin/equipo-acuicultura`), blog (`/admin/blog`), inversión (`/admin/inversion`) y enlaces (`/admin/links`).
+
+### Linktree QR (`/links`)
+
+`/links` es una página pública tipo "linktree" pensada como destino de un código QR impreso en material gráfico — logo, web, redes sociales y uno o más WhatsApp de la agrupación. **No está enlazada desde el Navbar ni el Footer del sitio a propósito**: se llega solo escaneando el QR o con la URL directa. El QR en sí (la imagen) se genera con una herramienta externa apuntando a `https://<dominio>/links` — este proyecto no lo genera.
+
+Se administra 100% desde `/admin/links`: agregar/editar/ocultar/reordenar/eliminar accesos (Instagram, Facebook, TikTok, YouTube, Email, WhatsApp). El acceso "Página web" es el único que no se puede eliminar ni cambiar de tipo (se crea solo la primera vez que se abre el editor). Detalle completo en [`specs/002-linktree-qr/`](../specs/002-linktree-qr/).
 
 ### Dominios autorizados
 

@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { to: '/admin/equipo-home', label: 'Equipo · Home' },
   { to: '/admin/equipo-acuicultura', label: 'Equipo · Acuicultura' },
   { to: '/admin/inversion', label: 'Inversión' },
+  { to: '/admin/links', label: 'Enlaces' },
 ];
 
 /**

@@ -17,8 +17,10 @@ import AdminTeamEditor from './components/admin/AdminTeamEditor';
 import AdminBlogEditor from './components/admin/AdminBlogEditor';
 import AdminBlogDesign from './components/admin/AdminBlogDesign';
 import AdminInvestmentEditor from './components/admin/AdminInvestmentEditor';
+import AdminLinksEditor from './components/admin/AdminLinksEditor';
 import BlogPage from './components/blog/BlogPage';
 import BlogPostPage from './components/blog/BlogPostPage';
+import LinksPage from './components/links/LinksPage';
 import './App.css';
 
 function HomePage() {
@@ -74,9 +76,14 @@ function App() {
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />
 
+      {/* Linktree público (FR-022), destino del código QR de gráfica. No se
+          enlaza desde Navbar/Footer a propósito (specs/002-linktree-qr,
+          research.md §5) — se llega solo escaneando el QR o con la URL directa. */}
+      <Route path="/links" element={<LinksPage />} />
+
       {/* Panel de administración (FR-001 a FR-003). "/admin" es siempre el login;
           "/admin/*" es el shell protegido — sus rutas hijas concretas
-          (equipo-home, equipo-acuicultura, blog, inversion) las registra
+          (equipo-home, equipo-acuicultura, blog, inversion, links) las registra
           cada historia de usuario correspondiente. */}
       <Route path="/admin" element={<AdminLogin />} />
       <Route
@@ -92,6 +99,7 @@ function App() {
         <Route path="blog" element={<AdminBlogEditor />} />
         <Route path="blog-diseno" element={<AdminBlogDesign />} />
         <Route path="inversion" element={<AdminInvestmentEditor />} />
+        <Route path="links" element={<AdminLinksEditor />} />
       </Route>
     </Routes>
   );

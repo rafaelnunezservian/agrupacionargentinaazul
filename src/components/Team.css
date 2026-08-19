@@ -105,11 +105,6 @@
   background: linear-gradient(180deg, #fffdf7 0%, var(--color-white) 100%);
 }
 
-.team-card-coordinator {
-  border: 2px solid rgba(0, 102, 204, 0.3);
-  background: linear-gradient(180deg, #f0f9ff 0%, var(--color-white) 100%);
-}
-
 .team-card:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 24px 64px rgba(0, 51, 102, 0.25);
@@ -118,11 +113,6 @@
 .team-card-leader:hover {
   border-color: rgba(255, 215, 0, 0.6);
   box-shadow: 0 24px 64px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 215, 0, 0.2);
-}
-
-.team-card-coordinator:hover {
-  border-color: rgba(0, 102, 204, 0.6);
-  box-shadow: 0 24px 64px rgba(0, 102, 204, 0.3), 0 0 60px rgba(0, 119, 190, 0.2);
 }
 
 /* Leadership Glow Effect */
@@ -137,14 +127,6 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.6s ease;
-}
-
-.coordinator-glow {
-  background: conic-gradient(from 0deg, transparent, rgba(0, 102, 204, 0.15), transparent, rgba(0, 119, 190, 0.15), transparent);
-}
-
-.communication-glow {
-  background: conic-gradient(from 0deg, transparent, rgba(92, 157, 203, 0.18), transparent, rgba(29, 56, 94, 0.12), transparent);
 }
 
 .team-card:hover .leadership-glow {
@@ -188,14 +170,6 @@
   border-bottom-color: rgba(255, 215, 0, 0.3);
 }
 
-.team-card-coordinator .team-card-image {
-  border-bottom-color: rgba(0, 102, 204, 0.3);
-}
-
-.team-card-communication .team-card-image {
-  border-bottom-color: rgba(92, 157, 203, 0.3);
-}
-
 .team-card:hover .team-card-image {
   border-bottom-color: currentColor;
 }
@@ -206,6 +180,20 @@
   object-fit: cover;
   object-position: top center;
   transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+/* Degradación controlada cuando no hay foto o la imagen falla (FR-021) */
+.team-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-gray) 0%, #dfe6ee 100%);
+}
+
+.team-empty-state {
+  text-align: center;
+  color: var(--color-navy);
+  opacity: 0.7;
+  padding: var(--spacing-lg) 0;
 }
 
 .team-card:hover .team-card-image img {
@@ -250,11 +238,6 @@
 .president-icon {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.95) 0%, rgba(255, 165, 0, 0.95) 100%);
   box-shadow: 0 8px 32px rgba(255, 165, 0, 0.5);
-}
-
-.coordinator-icon {
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.95) 0%, rgba(0, 119, 190, 0.95) 100%);
-  box-shadow: 0 8px 32px rgba(0, 102, 204, 0.5);
 }
 
 .team-card:hover .leadership-icon {
@@ -375,35 +358,16 @@
   animation: badgeShine 3s linear infinite;
 }
 
-.role-coordinator {
+.role-standard {
   background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-navy) 100%);
   color: var(--color-white);
   box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
-}
-
-.role-coordinator::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transform: rotate(45deg);
-  animation: badgeShine 3s linear infinite;
-}
-
-.role-communication {
-  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-navy) 100%);
-  color: var(--color-white);
-  box-shadow: 0 6px 20px rgba(92, 157, 203, 0.4);
-  font-size: 0.72rem;
-  padding: 0.6rem 1.1rem;
+  font-size: 0.78rem;
   line-height: 1.35;
   text-align: center;
 }
 
-.role-communication::before {
+.role-standard::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -422,6 +386,42 @@
   100% {
     transform: translateX(100%) rotate(45deg);
   }
+}
+
+.team-whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+  padding: 0.7rem 0.7rem 0.7rem 1.35rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #34d399 0%, #128c4a 100%);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.team-whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(37, 211, 102, 0.45);
+}
+
+.team-whatsapp-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .team-card-position {
@@ -876,24 +876,6 @@
   font-family: var(--font-display);
   color: var(--color-navy);
   margin-top: var(--spacing-sm);
-}
-
-.team-card-communication {
-  border: 2px solid rgba(92, 157, 203, 0.2);
-  background: linear-gradient(180deg, #f8fbfd 0%, var(--color-white) 100%);
-}
-
-.team-card-communication:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 48px rgba(0, 51, 102, 0.15);
-  border-color: var(--color-blue);
-}
-
-/* Modificador de .leadership-icon: mismo tamaño y comportamiento
-   que los íconos de Presidente/Coordinador, en paleta institucional */
-.communication-icon {
-  background: linear-gradient(135deg, rgba(92, 157, 203, 0.95) 0%, rgba(29, 56, 94, 0.95) 100%);
-  box-shadow: 0 8px 32px rgba(92, 157, 203, 0.5);
 }
 
 .role-director {

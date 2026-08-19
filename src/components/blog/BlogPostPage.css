@@ -1,0 +1,375 @@
+/* ============================================
+   DETALLE DE ENTRADA — port de la página de post del theme Hexo
+   "livemylife" (`article` + `.post-container` + `#sidebar` + `.pager`
+   + `.sidebar-container`), con los tokens de Argentina Azul.
+
+   Mapeo de colores del theme de referencia (T044):
+     #404040 (texto del artículo)  -> var(--color-navy)
+     #808080 (texto secundario)    -> var(--color-navy) al 55%
+     #bfbfbf (texto del sidebar)   -> var(--color-navy) al 45%
+     #337ab7 (enlaces del cuerpo)  -> var(--color-blue)
+     #0085a1 (hover del theme)     -> var(--color-navy-light)
+   Tipografía: títulos con var(--font-display), cuerpo con var(--font-body).
+   ============================================ */
+
+.blog-post-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Anidado bajo `.blog-page-post` por el mismo motivo que el listado: el
+   elemento lleva también `.container`, cuyo `padding` en shorthand competía. */
+.blog-post-page .blog-post-page-empty-state {
+  color: var(--color-navy);
+  opacity: 0.7;
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.blog-post-page-back-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--color-blue);
+}
+
+.blog-post-page-back-link:hover {
+  color: var(--color-navy-light);
+}
+
+/* ---------- Rejilla del artículo ---------- */
+
+.blog-post {
+  overflow-x: hidden;
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-2xl);
+}
+
+@media only screen and (max-width: 768px) {
+  .blog-post {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+  }
+}
+
+/* Rejilla del artículo. Debajo de 1100px es una sola columna con medida de
+   lectura acotada (el theme de referencia también esconde la columna lateral
+   en ese ancho). A partir de ahí, y solo si la columna lateral tiene algo que
+   mostrar, se abre en dos: artículo flexible y sidebar fijo de 300px, con una
+   calle de 4rem entre ambos. Las proporciones resultantes son las mismas del
+   theme (artículo ~66%, lateral ~25%). */
+.blog-post-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: var(--spacing-xl);
+}
+
+.blog-post-container,
+.blog-post-sidebar-container {
+  grid-column: 1;
+  width: 100%;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* La columna lateral se omite por completo en mobile y tablet. */
+.blog-post-aside {
+  display: none;
+}
+
+@media only screen and (min-width: 1100px) {
+  .blog-post-row-with-aside {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .blog-post-row-with-aside .blog-post-container,
+  .blog-post-row-with-aside .blog-post-sidebar-container {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .blog-post-row-with-aside .blog-post-aside {
+    display: block;
+    grid-column: 2;
+    /* Abarca artículo y widgets de abajo, para que el bloque pegajoso tenga
+       recorrido en notas cortas. */
+    grid-row: 1 / span 2;
+  }
+}
+
+/* ---------- Cuerpo del artículo ---------- */
+
+.blog-post-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-navy);
+}
+
+.blog-post-body p {
+  margin: 30px 0;
+}
+
+.blog-post-body h1,
+.blog-post-body h2,
+.blog-post-body h3,
+.blog-post-body h4,
+.blog-post-body h5,
+.blog-post-body h6 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  margin: 30px 0 10px;
+}
+
+.blog-post-body h5,
+.blog-post-body h6 {
+  font-weight: 600;
+  color: rgba(29, 56, 94, 0.55);
+}
+
+.blog-post-body h5 {
+  font-size: 19px;
+}
+
+.blog-post-body h6 {
+  font-size: 16px;
+}
+
+.blog-post-body h5 + p,
+.blog-post-body h6 + p {
+  margin-top: 5px;
+}
+
+.blog-post-body ul,
+.blog-post-body ol {
+  margin-bottom: 40px;
+}
+
+.blog-post-body blockquote {
+  color: rgba(29, 56, 94, 0.55);
+  font-style: italic;
+  font-size: 0.95em;
+  margin: 20px 0;
+}
+
+.blog-post-body blockquote p {
+  margin: 0;
+}
+
+.blog-post-body a {
+  color: var(--color-blue);
+}
+
+.blog-post-body a:hover,
+.blog-post-body a:focus {
+  color: var(--color-navy-light);
+}
+
+.blog-post-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-post-container hr,
+.blog-post-sidebar-container hr {
+  border: 0;
+  border-top: 1px solid rgba(29, 56, 94, 0.1);
+  margin: var(--spacing-md) 0;
+}
+
+/* ---------- Pager (entrada anterior / siguiente) ---------- */
+
+.blog-post-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.blog-post-pager li a,
+.blog-post-pager li span {
+  display: inline-block;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.7;
+  padding: 10px;
+  background-color: var(--color-white);
+  border: 1px solid rgba(29, 56, 94, 0.15);
+  border-radius: 0;
+  color: var(--color-navy);
+}
+
+.blog-post-pager li a:hover,
+.blog-post-pager li a:focus {
+  color: var(--color-white);
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+.blog-post-pager .disabled span {
+  color: rgba(29, 56, 94, 0.35);
+  background-color: var(--color-gray);
+  cursor: not-allowed;
+}
+
+@media only screen and (min-width: 840px) {
+  .blog-post-pager li a,
+  .blog-post-pager li span {
+    font-size: 14px;
+  }
+}
+
+/* ---------- Columna lateral (`#sidebar`: índice + presentaciones) ---------- */
+
+.blog-post-aside-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-left: var(--spacing-md);
+  border-left: 1px solid rgba(29, 56, 94, 0.1);
+  /* El theme conmuta a `position: fixed` con `top: 60px` (catalog.js). Acá se
+     usa `sticky` con el mismo desplazamiento: mismo comportamiento visual sin
+     perder el ancho de la columna al despegarse. */
+  position: sticky;
+  top: 90px;
+}
+
+.blog-post-toc {
+  line-height: 1em;
+  font-size: 0.9em;
+}
+
+.blog-post-toc.is-fixed {
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+/* Bloques "Sobre el presidente / el coordinador / el autor" */
+.blog-post-about + .blog-post-about {
+  border-top: 1px solid rgba(29, 56, 94, 0.1);
+  padding-top: var(--spacing-md);
+}
+
+.blog-post-about-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-blue);
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.blog-post-about-person {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.blog-post-about-photo {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.blog-post-about-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--color-navy);
+}
+
+.blog-post-about-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(29, 56, 94, 0.7);
+  margin: 0.6rem 0 0;
+}
+
+.blog-post-toc-title {
+  font-family: var(--font-display);
+  font-size: 120%;
+  color: var(--color-navy);
+}
+
+.blog-post-toc-nav {
+  padding: 0;
+  margin: 1em;
+  line-height: 1.8em;
+  list-style: none;
+}
+
+.blog-post-toc-item a {
+  font-family: var(--font-body);
+  color: rgba(29, 56, 94, 0.7);
+  padding: 1px;
+}
+
+.blog-post-toc-item a:hover,
+.blog-post-toc-item.active a {
+  color: var(--color-blue);
+}
+
+.blog-post-toc-level-3 {
+  padding-left: 1em;
+}
+
+/* ---------- Widgets debajo del artículo (`.sidebar-container`) ---------- */
+
+.blog-post-sidebar-container {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(29, 56, 94, 0.45);
+  /* Columna aparte debajo del artículo, como en el theme: necesita su propio
+     aire respecto del pager que cierra la columna de arriba. */
+  margin-top: var(--spacing-lg);
+  grid-row: 2;
+}
+
+.blog-post-sidebar-container h5 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(29, 56, 94, 0.55);
+  padding-bottom: 1em;
+  text-transform: uppercase;
+}
+
+.blog-post-sidebar-container h5 a {
+  color: inherit;
+}
+
+.blog-post-sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.blog-post-sidebar-list a {
+  color: rgba(29, 56, 94, 0.6);
+}
+
+.blog-post-sidebar-list a:hover,
+.blog-post-sidebar-list a:focus {
+  color: var(--color-blue);
+}

@@ -17,6 +17,9 @@ dist-ssr
 /screenshot.mjs
 /skills-lock.json
 
+# Salida de la comparación visual del blog (scripts/blog-visual-check.mjs)
+/scripts/visual-check-output/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

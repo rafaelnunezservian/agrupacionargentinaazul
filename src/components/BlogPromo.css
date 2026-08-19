@@ -1,0 +1,96 @@
+/* ============================================
+   ACCESO AL BLOG DESDE EL HOME
+   Banda clara entre el equipo (fondo blanco) y el CTA final, para separar
+   visualmente las dos secciones sin competir con ninguna.
+   ============================================ */
+
+.blog-promo {
+  background: var(--color-gray);
+  border-top: 1px solid rgba(29, 56, 94, 0.06);
+  border-bottom: 1px solid rgba(29, 56, 94, 0.06);
+}
+
+.blog-promo-content {
+  max-width: 780px;
+  text-align: center;
+}
+
+.blog-promo-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-blue);
+  margin-bottom: var(--spacing-sm);
+}
+
+.blog-promo-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.15;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-sm);
+}
+
+.blog-promo-highlight {
+  color: var(--color-blue);
+}
+
+.blog-promo-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--color-navy);
+  opacity: 0.8;
+  max-width: 620px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.blog-promo-actions {
+  margin: 0;
+}
+
+.blog-promo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-navy) 100%);
+  color: var(--color-white);
+  padding: 1.05rem 2.4rem;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(29, 56, 94, 0.25);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.blog-promo-cta:hover {
+  color: var(--color-white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(29, 56, 94, 0.35);
+}
+
+.blog-promo-cta svg {
+  transition: transform var(--transition-medium);
+}
+
+.blog-promo-cta:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .blog-promo-subtitle {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .blog-promo-cta {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}

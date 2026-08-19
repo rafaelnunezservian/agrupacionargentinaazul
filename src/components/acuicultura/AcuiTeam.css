@@ -14,11 +14,21 @@
   margin-bottom: 3rem;
 }
 
+.acui-team-empty-state {
+  text-align: center;
+  color: var(--color-navy);
+  opacity: 0.7;
+}
+
+/* Flexbox centrado en vez de grid: con pocos integrantes, un grid de columnas
+   elásticas (auto-fit) deja cada tarjeta pegada a la izquierda de una columna
+   mucho más ancha que ella, generando huecos enormes. Flex + wrap + gap fijo
+   agrupa las tarjetas entre sí sin importar cuántas haya. */
 .acui-team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
-  align-items: stretch;
 }
 
 .acui-team-card {
@@ -28,8 +38,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(29, 56, 94, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
-  max-width: 240px;
+  width: 240px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -76,15 +85,50 @@
   margin-top: auto;
 }
 
+.acui-team-whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.4rem 0.4rem 0.9rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #34d399 0%, #128c4a 100%);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.acui-team-whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
+}
+
+.acui-team-whatsapp-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+}
+
 @media (max-width: 600px) {
   .acui-team-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
   .acui-team-card {
+    width: calc(50% - 0.5rem);
     padding: 1.5rem 1rem;
-    max-width: none;
   }
 
   .acui-team-photo-frame {

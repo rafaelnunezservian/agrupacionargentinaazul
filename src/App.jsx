@@ -6,9 +6,19 @@ import About from './components/About';
 import Impact from './components/Impact';
 import AcuiPromo from './components/AcuiPromo';
 import Team from './components/Team';
+import BlogPromo from './components/BlogPromo';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
 import AcuiculturaPage from './components/acuicultura/AcuiculturaPage';
+import AdminLogin from './components/admin/AdminLogin';
+import AdminLayout from './components/admin/AdminLayout';
+import RequireAuth from './components/admin/RequireAuth';
+import AdminTeamEditor from './components/admin/AdminTeamEditor';
+import AdminBlogEditor from './components/admin/AdminBlogEditor';
+import AdminBlogDesign from './components/admin/AdminBlogDesign';
+import AdminInvestmentEditor from './components/admin/AdminInvestmentEditor';
+import BlogPage from './components/blog/BlogPage';
+import BlogPostPage from './components/blog/BlogPostPage';
 import './App.css';
 
 function HomePage() {
@@ -47,6 +57,7 @@ function HomePage() {
       <Impact />
       <AcuiPromo />
       <Team />
+      <BlogPromo />
       <CallToAction />
       <Footer />
     </div>
@@ -58,6 +69,30 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/aquadeal" element={<AcuiculturaPage />} />
+
+      {/* Blog público (FR-020, FR-020a, FR-011, FR-015): listado + detalle. */}
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:slug" element={<BlogPostPage />} />
+
+      {/* Panel de administración (FR-001 a FR-003). "/admin" es siempre el login;
+          "/admin/*" es el shell protegido — sus rutas hijas concretas
+          (equipo-home, equipo-acuicultura, blog, inversion) las registra
+          cada historia de usuario correspondiente. */}
+      <Route path="/admin" element={<AdminLogin />} />
+      <Route
+        path="/admin/*"
+        element={
+          <RequireAuth>
+            <AdminLayout />
+          </RequireAuth>
+        }
+      >
+        <Route path="equipo-home" element={<AdminTeamEditor section="home" />} />
+        <Route path="equipo-acuicultura" element={<AdminTeamEditor section="acuicultura" />} />
+        <Route path="blog" element={<AdminBlogEditor />} />
+        <Route path="blog-diseno" element={<AdminBlogDesign />} />
+        <Route path="inversion" element={<AdminInvestmentEditor />} />
+      </Route>
     </Routes>
   );
 }

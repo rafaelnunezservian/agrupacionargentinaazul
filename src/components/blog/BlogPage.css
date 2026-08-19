@@ -1,0 +1,91 @@
+.blog-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El listado arranca debajo del hero, con aire propio arriba y abajo para que
+   no quede pegado ni al remate de olas ni al footer.
+   Va anidado bajo `.blog-page` a propósito: el elemento también lleva la clase
+   `.container`, que define `padding` en shorthand y con la misma especificidad
+   le pisaba el padding vertical. */
+.blog-page .blog-page-listing {
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+}
+
+.blog-page-empty-state {
+  color: var(--color-navy);
+  opacity: 0.7;
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.blog-page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.blog-post-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border: 1px solid #e2e7ee;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.blog-post-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.blog-post-card-cover {
+  aspect-ratio: 16 / 9;
+  background: var(--color-gray);
+  overflow: hidden;
+}
+
+.blog-post-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-post-card-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-gray), #dfe6ee);
+}
+
+.blog-post-card-body {
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.blog-post-card-title {
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.blog-post-card-date {
+  font-size: 0.85rem;
+  color: var(--color-navy);
+  opacity: 0.65;
+}
+
+@media (max-width: 768px) {
+  .blog-page .blog-page-listing {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .blog-page-grid {
+    gap: var(--spacing-sm);
+  }
+}

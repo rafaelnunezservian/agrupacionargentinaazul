@@ -76,7 +76,6 @@ function AcuiculturaPage() {
       <AcuiHero />
       <AcuiOpportunity />
       <AcuiProgram />
-      <AcuiInstructor />
       <AcuiTeam />
       <AcuiSocialProof />
       <AcuiPricing />
